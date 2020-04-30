@@ -4,5 +4,5 @@
 
 resource "stress_memory" "memory" {
   duration = 60
-  size = 120
+  size = 64
 }
