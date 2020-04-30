@@ -1,8 +1,8 @@
-#resource "stress_cpu" "my-server" {
-  #duration = 60
-#}
+resource "stress_cpu" "my-server" {
+  duration = 300
+}
 
-#resource "stress_memory" "memory" {
-  #duration = 60
-  #size = 64
-#}
+resource "stress_memory" "memory" {
+  duration = 300
+  size = 128
+}
