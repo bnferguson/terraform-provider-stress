@@ -1,0 +1,29 @@
+*.dll
+*.exe
+.DS_Store
+example.tf
+terraform.tfplan
+terraform.tfstate
+terraform-provider-stress
+/pkg/
+/work/
+.vagrant/
+*.backup
+./*.tfstate
+.terraform/
+*.log
+*.bak
+*~
+.*.swp
+.idea
+.vscode
+*.iml
+*.test
+*.iml
+log.txt
+
+
+# Keep windows files with windows line endings
+*.winfile eol=crlf
+/.vs
+node_modules
