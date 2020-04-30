@@ -3,7 +3,7 @@ package main
 import (
 	"runtime"
 	"time"
-
+  "math/rand"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
   "github.com/dustinkirkland/golang-petname"
 )
@@ -27,6 +27,7 @@ func resourceCpu() *schema.Resource {
 func resourceCpuCreate(d *schema.ResourceData, m interface{}) error {
         duration := d.Get("duration").(int)
         done := make(chan int)
+        rand.Seed(time.Now().UTC().UnixNano())
         id := petname.Generate(3, "-")
         d.SetId(id)
         for i := 0; i < runtime.NumCPU(); i++ {
