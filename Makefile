@@ -43,6 +43,10 @@ fmtcheck:
 errcheck:
 	@sh -c "'$(CURDIR)/scripts/errcheck.sh'"
 
+linux: fmtcheck
+	mkdir -vp terraform.d/plugins/linux_amd64
+	GOOS=linux GOARCH=amd64 go build -o terraform.d/plugins/linux_amd64/terraform-provider-stress .
+
 test-compile:
 	@if [ "$(TEST)" = "./..." ]; then \
 		echo "ERROR: Set TEST to a specific package. For example,"; \

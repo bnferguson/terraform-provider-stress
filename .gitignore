@@ -4,7 +4,7 @@
 example.tf
 terraform.tfplan
 terraform.tfstate
-terraform-provider-stress
+/terraform-provider-stress
 /pkg/
 /work/
 .vagrant/
