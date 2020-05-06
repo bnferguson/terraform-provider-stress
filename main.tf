@@ -3,6 +3,6 @@
 #}
 
 resource "stress_memory" "memory" {
-  duration = 30
-  size = 128
+  duration = 300
+  size = 256
 }
