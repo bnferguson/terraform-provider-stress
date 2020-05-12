@@ -1,6 +1,6 @@
 variable "cpu_stress_duration" {
   type = number
-  default = "3"
+  default = "1"
 }
 
 variable "memory_stress_duration" {
