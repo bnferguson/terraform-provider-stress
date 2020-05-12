@@ -1,0 +1,3 @@
+cpu_stress_duration=60
+memory_stress_duration=100
+memory_stress_size=512
