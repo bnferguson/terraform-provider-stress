@@ -10,7 +10,7 @@ variable "memory_stress_duration" {
 
 variable "memory_stress_size" {
   type = number
-  default = "1000"
+  default = "500"
 }
 
 #resource "stress_cpu" "my-server" {
