@@ -54,9 +54,6 @@ func resourceCpuRead(d *schema.ResourceData, m interface{}) error {
 func resourceCpuUpdate(d *schema.ResourceData, m interface{}) error {
 	duration := d.Get("duration").(int)
 	done := make(chan int)
-	rand.Seed(time.Now().UTC().UnixNano())
-	id := petname.Generate(3, "-")
-	d.SetId(id)
 	for i := 0; i < runtime.NumCPU(); i++ {
 		go func() {
 			for {

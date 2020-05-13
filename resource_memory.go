@@ -89,10 +89,6 @@ func resourceMemoryUpdate(d *schema.ResourceData, m interface{}) error {
 	runtime.GC()
 	PrintMemUsage()
 
-	rand.Seed(time.Now().UTC().UnixNano())
-	id := petname.Generate(3, "-")
-	d.SetId(id)
-
 	return resourceMemoryRead(d, m)
 }
 
