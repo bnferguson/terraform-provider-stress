@@ -52,7 +52,27 @@ func resourceCpuRead(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceCpuUpdate(d *schema.ResourceData, m interface{}) error {
-	return resourceCpuRead(d, m)
+	duration := d.Get("duration").(int)
+	done := make(chan int)
+	rand.Seed(time.Now().UTC().UnixNano())
+	id := petname.Generate(3, "-")
+	d.SetId(id)
+	for i := 0; i < runtime.NumCPU(); i++ {
+		go func() {
+			for {
+				select {
+				case <-done:
+					return
+				default:
+				}
+			}
+		}()
+	}
+
+	time.Sleep(time.Second * time.Duration(duration))
+	close(done)
+
+  return resourceCpuRead(d, m)
 }
 
 func resourceCpuDelete(d *schema.ResourceData, m interface{}) error {
