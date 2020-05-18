@@ -69,7 +69,7 @@ func resourceCpuUpdate(d *schema.ResourceData, m interface{}) error {
 	time.Sleep(time.Second * time.Duration(duration))
 	close(done)
 
-  return resourceCpuRead(d, m)
+	return resourceCpuRead(d, m)
 }
 
 func resourceCpuDelete(d *schema.ResourceData, m interface{}) error {

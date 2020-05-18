@@ -7,8 +7,8 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"stress_cpu":    resourceCpu(),
-			"stress_memory": resourceMemory(),
+			"stress_cpu":       resourceCpu(),
+			"stress_memory":    resourceMemory(),
 			"stress_statefile": resourceStatefile(),
 		},
 	}
