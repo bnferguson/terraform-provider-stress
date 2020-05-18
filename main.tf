@@ -22,8 +22,8 @@ variable "memory_stress_size" {
   #size = var.memory_stress_size
 #}
 
-resource "stress_statefile" "statefile" {
-  count = 5000
-  // Bigger than 3mb and you'll start seeing the RPC connection between tf and the provider break due to the 4mb limit
-  size = 1
-}
+#resource "stress_statefile" "statefile" {
+  #count = 5000
+  #// Bigger than 3mb and you'll start seeing the RPC connection between tf and the provider break due to the 4mb limit
+  #size = 1
+#}
