@@ -17,12 +17,12 @@ variable "memory_stress_size" {
   #duration = var.cpu_stress_duration
 #}
 
-resource "stress_memory" "memory" {
-  duration = var.memory_stress_duration
-  size = var.memory_stress_size
-}
+#resource "stress_memory" "memory" {
+  #duration = var.memory_stress_duration
+  #size = var.memory_stress_size
+#}
 
 resource "stress_statefile" "statefile" {
-  count = 2500
+  count = 5000
   size = 1 # size is currently not used
 }
