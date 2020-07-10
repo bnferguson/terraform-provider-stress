@@ -1,6 +1,6 @@
 variable "cpu_stress_duration" {
   type = number
-  default = "1"
+  default = "60"
 }
 
 variable "memory_stress_duration" {
@@ -10,7 +10,7 @@ variable "memory_stress_duration" {
 
 variable "memory_stress_size" {
   type = number
-  default = "400"
+  default = "401"
 }
 
 #resource "stress_cpu" "my-server" {
@@ -22,7 +22,7 @@ resource "stress_memory" "memory" {
   size = var.memory_stress_size
 }
 
-#resource "stress_statefile" "statefile" {
-  #count = 5000
-  #size = 1 # size is currently not used
-#}
+resource "stress_statefile" "statefile" {
+  count = 500
+  size = 1 # size is currently not used
+}
