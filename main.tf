@@ -5,7 +5,7 @@ variable "cpu_stress_duration" {
 
 variable "memory_stress_duration" {
   type = number
-  default = "900"
+  default = "301"
 }
 
 variable "memory_stress_size" {
