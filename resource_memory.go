@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/dustinkirkland/golang-petname"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"math/rand"
 	"runtime"
 	"time"
+
+	petname "github.com/dustinkirkland/golang-petname"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceMemory() *schema.Resource {
@@ -17,11 +19,11 @@ func resourceMemory() *schema.Resource {
 		Delete: resourceMemoryDelete,
 
 		Schema: map[string]*schema.Schema{
-			"duration": &schema.Schema{
+			"duration": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"size": &schema.Schema{
+			"size": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
