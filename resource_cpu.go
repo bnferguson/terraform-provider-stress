@@ -22,6 +22,11 @@ func resourceCpu() *schema.Resource {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
+			"core_count": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  runtime.NumCPU(),
+			},
 		},
 	}
 }
@@ -32,7 +37,7 @@ func resourceCpuCreate(d *schema.ResourceData, m interface{}) error {
 	rand.Seed(time.Now().UTC().UnixNano())
 	id := petname.Generate(3, "-")
 	d.SetId(id)
-	for i := 0; i < runtime.NumCPU(); i++ {
+	for i := 0; i < d.Get("core_count").(int); i++ {
 		go func() {
 			for {
 				select {
@@ -56,7 +61,7 @@ func resourceCpuRead(d *schema.ResourceData, m interface{}) error {
 func resourceCpuUpdate(d *schema.ResourceData, m interface{}) error {
 	duration := d.Get("duration").(int)
 	done := make(chan int)
-	for i := 0; i < runtime.NumCPU(); i++ {
+	for i := 0; i < d.Get("core_count").(int); i++ {
 		go func() {
 			for {
 				select {
