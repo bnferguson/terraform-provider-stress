@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/dustinkirkland/golang-petname"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"math/rand"
 	"runtime"
 	"time"
+
+	petname "github.com/dustinkirkland/golang-petname"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceCpu() *schema.Resource {
@@ -16,7 +18,7 @@ func resourceCpu() *schema.Resource {
 		Delete: resourceCpuDelete,
 
 		Schema: map[string]*schema.Schema{
-			"duration": &schema.Schema{
+			"duration": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},

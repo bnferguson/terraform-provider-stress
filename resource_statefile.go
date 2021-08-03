@@ -6,7 +6,8 @@ import (
 	"time"
 
 	petname "github.com/dustinkirkland/golang-petname"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func resourceStatefile() *schema.Resource {
@@ -17,11 +18,11 @@ func resourceStatefile() *schema.Resource {
 		Delete: resourceStatefileDelete,
 
 		Schema: map[string]*schema.Schema{
-			"size": &schema.Schema{
+			"size": {
 				Type:     schema.TypeInt,
 				Required: true,
 			},
-			"data": &schema.Schema{
+			"data": {
 				Type:     schema.TypeList,
 				Computed: true,
 				Elem: &schema.Schema{
