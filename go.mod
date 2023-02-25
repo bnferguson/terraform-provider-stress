@@ -20,7 +20,7 @@ require (
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/zclconf/go-cty v1.9.0 // indirect
 	golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985 // indirect
-	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	golang.org/x/sys v0.1.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20210803142424-70bd63adacf2 // indirect
 )
