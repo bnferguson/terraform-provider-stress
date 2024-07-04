@@ -19,7 +19,7 @@ require (
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/zclconf/go-cty v1.9.0 // indirect
-	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/net v0.23.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20210803142424-70bd63adacf2 // indirect
 )
