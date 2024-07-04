@@ -1,3 +1,5 @@
+VERSION = 1.0.0
+OS_ARCHS = linux_amd64 darwin_arm64
 TEST?=$$(go list ./... |grep -v 'vendor')
 GOFMT_FILES?=$$(find . -name '*.go' |grep -v vendor)
 PKG_NAME=stress
@@ -43,9 +45,17 @@ fmtcheck:
 errcheck:
 	@sh -c "'$(CURDIR)/scripts/errcheck.sh'"
 
-linux: fmtcheck
-	mkdir -vp terraform.d/plugins/linux_amd64
-	GOOS=linux GOARCH=amd64 go build -o terraform.d/plugins/linux_amd64/terraform-provider-stress .
+build-all: fmtcheck
+	mkdir -vp terraform.d/plugins/terraform.volcanicislandfortress.com/bnferguson/stress/1.0.0/linux_amd64
+	GOOS=linux GOARCH=amd64 go build -o terraform.d/plugins/terraform.volcanicislandfortress.com/bnferguson/stress/1.0.0/linux_amd64/terraform-provider-stress .
+	mkdir -vp terraform.d/plugins/terraform.volcanicislandfortress.com/bnferguson/stress/1.0.0/darwin_arm64
+	GOOS=darwin GOARCH=arm64 go build -o terraform.d/plugins/terraform.volcanicislandfortress.com/bnferguson/stress/1.0.0/darwin_arm64/terraform-provider-stress .
+
+build-and-package: build-all
+	@for os_arch in $(OS_ARCHS); do \
+		echo '{ "version": "$(VERSION)", "architectures": ["amd64"], "os": ["linux", "darwin"], "filename": "terraform-provider-stress", "protocols": ["5.0"] }' > terraform-provider-stress_$(VERSION)_manifest.json ; \
+		zip -j terraform-provider-stress_$(VERSION)_$$os_arch.zip terraform.d/plugins/terraform.volcanicislandfortress.com/bnferguson/stress/$(VERSION)/$$os_arch/terraform-provider-stress terraform-provider-stress_$(VERSION)_manifest.json ; \
+	done
 
 test-compile:
 	@if [ "$(TEST)" = "./..." ]; then \
@@ -56,4 +66,4 @@ test-compile:
 	go test -c $(TEST) $(TESTARGS)
 
 
-.PHONY: build test testacc vet fmt fmtcheck errcheck test-compile
+.PHONY: build build-all build-and-package test testacc vet fmt fmtcheck errcheck test-compile
