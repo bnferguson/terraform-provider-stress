@@ -2,7 +2,7 @@
 terraform {
   required_providers {
     stress = {
-      source  = "hashicorp/stress"
+      source  = "terraform.volcanicislandfortress.com/bnferguson/stress"
       version = ">= 1.0"
     }
   }
